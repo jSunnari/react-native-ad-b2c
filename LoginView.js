@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Dimensions } from "react-native";
+import { Dimensions, SafeAreaView } from "react-native";
 import { WebView } from 'react-native-webview';
 import log from "./logger";
 import B2CAuthentication from "./ReactNativeADB2C";
