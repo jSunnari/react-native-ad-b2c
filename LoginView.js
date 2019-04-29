@@ -81,6 +81,7 @@ export default class LoginView extends React.Component {
                     // injectedJavaScript={js}
                     ref={r => this.WEBVIEW_REF = r}
                     bounces={false}
+                    onLoad={this.props.onLoad}
                 />
             </SafeAreaView>
         ) : null;
