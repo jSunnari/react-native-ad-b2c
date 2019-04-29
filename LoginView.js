@@ -8,6 +8,7 @@ export default class LoginView extends React.Component {
     onTokenGranted = () => { };
     lock = false;
     accessToken = {};
+    WEBVIEW_REF = {};
 
     constructor(props) {
         super(props);
@@ -77,6 +78,7 @@ export default class LoginView extends React.Component {
                 startInLoadingState={false}
                 injectedJavaScript={js}
                 scalesPageToFit={true}
+                ref={r => this.WEBVIEW_REF = r}
             />
         ) : null;
     };
@@ -159,13 +161,14 @@ export default class LoginView extends React.Component {
             let errorCode = String(errorDescription[0]).replace(/(\?|\&)?error_description\=/, "")
             switch (errorCode) {
                 case "AADB2C90118":
-                        let url = 'https://login.microsoftonline.com/te'
+                    let url = 'https://login.microsoftonline.com/te'
                     this.setState({
-                        page: this.getPasswordResetUrl(url),
-                        visible: true
+                        page: this.getPasswordResetUrl(url)
                     });
                     return true;
-                    break;
+                case "AADB2C90091":
+                    this.WEBVIEW_REF.goBack();
+                    return true;
                 default:
                     break;
             }
