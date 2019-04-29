@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Dimensions, SafeAreaView } from "react-native";
+import { Dimensions, SafeAreaView, ActivityIndicator } from "react-native";
 import { WebView } from 'react-native-webview';
 import log from "./logger";
 import B2CAuthentication from "./ReactNativeADB2C";
@@ -84,7 +84,7 @@ export default class LoginView extends React.Component {
                     onLoad={this.props.onLoad}
                 />
             </SafeAreaView>
-        ) : null;
+        ) : <ActivityIndicator style={{ position: "absolute", top: Dimensions.get("window").height / 2 - 18, left: Dimensions.get("window").width / 2 - 18 }} size="large"/>;
     };
 
     /**
