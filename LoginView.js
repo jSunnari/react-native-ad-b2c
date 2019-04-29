@@ -49,38 +49,39 @@ export default class LoginView extends React.Component {
             }px';`;
 
         return this.state.visible ? (
-            <WebView
-                ref="ADLoginView"
-                automaticallyAdjustContentInsets={false}
-                style={[
-                    this.props.style,
-                    {
-                        flex: 1,
-                        alignSelf: "stretch",
-                        width: Dimensions.get("window").width,
-                        height: Dimensions.get("window").height
-                    }
-                ]}
-                source={{ uri: this.state.page }}
-                javaScriptEnabled={true}
-                domStorageEnabled={true}
-                onLoadEnd={() => {
-                    if (this._needRedirect) {
-                        this._needRedirect = false;
-                        this.setState({ page: this.getLoginUrl(this.props.context.getConfig().authority_host) });
-                    }
-                }}
-                decelerationRate="normal"
-                javaScriptEnabledAndroid={true}
-                onNavigationStateChange={this._handleADToken.bind(this)}
-                onShouldStartLoadWithRequest={e => {
-                    return true;
-                }}
-                startInLoadingState={false}
-                injectedJavaScript={js}
-                scalesPageToFit={true}
-                ref={r => this.WEBVIEW_REF = r}
-            />
+            <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+                <WebView
+                    ref="ADLoginView"
+                    automaticallyAdjustContentInsets={false}
+                    style={[
+                        this.props.style,
+                        {
+                            flex: 1,
+                            alignSelf: "stretch",
+                            width: Dimensions.get("window").width,
+                            height: Dimensions.get("window").height
+                        }
+                    ]}
+                    source={{ uri: this.state.page }}
+                    javaScriptEnabled={true}
+                    domStorageEnabled={true}
+                    onLoadEnd={() => {
+                        if (this._needRedirect) {
+                            this._needRedirect = false;
+                            this.setState({ page: this.getLoginUrl(this.props.context.getConfig().authority_host) });
+                        }
+                    }}
+                    decelerationRate="normal"
+                    javaScriptEnabledAndroid={true}
+                    onNavigationStateChange={this._handleADToken.bind(this)}
+                    onShouldStartLoadWithRequest={e => {
+                        return true;
+                    }}
+                    startInLoadingState={false}
+                    // injectedJavaScript={js}
+                    ref={r => this.WEBVIEW_REF = r}
+                />
+            </SafeAreaView>
         ) : null;
     };
 
