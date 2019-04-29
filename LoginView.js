@@ -123,7 +123,7 @@ export default class LoginView extends React.Component {
         if (context !== null) {
             const result =
                 `${authUrl}/${tenant}/${passwordResetPolicy}/oauth2/v2.0/authorize?response_type=id_token` +
-                (scope ? `&scope=${scope.join(" ")}%20openid%20profile` : "") +
+                (scope ? `&scope=${scope.join("%20")}%20openid%20profile` : "") +
                 `&client_id=${clientId}` +
                 (redirect ? `&redirect_uri=${redirect}&nonce=rnad-${Date.now()}` : "") +
                 (prompt ? `&prompt=${prompt}` : "");
