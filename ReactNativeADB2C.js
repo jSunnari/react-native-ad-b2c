@@ -47,7 +47,7 @@ class B2CAuthentication {
   */
   assureToken = (credentials) => {
     if (Date.now() < credentials.expires_on)
-      return new Promise.resolve(credentials.access_token);
+      return new Promise.resolve(credentials);
     else {
       return this.refreshToken(credentials.refresh_token);
     }
@@ -67,7 +67,7 @@ class B2CAuthentication {
       const grantType = "refresh_token";
       this.grantAccessToken(grantType, config)
         .then((resp) => {
-          resolve(resp.response.access_token);
+          resolve(resp.response);
         })
         .catch((err) => {
           reject(err);
