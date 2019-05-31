@@ -1,0 +1,19 @@
+{
+  "name": "react-native-ad-b2c",
+  "version": "1.0.0",
+  "description": "React Native client library for Azure Active Directory B2C",
+  "main": "LoginView.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jSunnari/react-native-ad-b2c.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jSunnari/react-native-ad-b2c/issues"
+  },
+  "homepage": "https://github.com/jSunnari/react-native-ad-b2c#readme"
+}
